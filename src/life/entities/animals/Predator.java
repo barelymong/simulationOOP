@@ -1,8 +1,4 @@
-package life.animals;
-
-import life.Coordinate;
-
-import java.util.List;
+package life.entities.animals;
 
 public class Predator extends Creature{
     private int strength;

@@ -1,11 +1,12 @@
-package life.objects;
+package life.entities.naturalEntities;
 
-public class Ground extends NaturalEntity{
-    private String image = "☐";
-    boolean crossAbility = true;
+public class Rock extends NaturalEntity{
+    private String image = "■";
+
     public boolean isCrossAbility() {
         return crossAbility;
     }
+    boolean crossAbility = false;
     @Override
     public String getImage() {
         return image;

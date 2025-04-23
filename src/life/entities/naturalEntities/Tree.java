@@ -1,5 +1,4 @@
-package life.objects;
-import life.Entity;
+package life.entities.naturalEntities;
 
 public class Tree extends NaturalEntity {
     String image = "\uD83C\uDF34";

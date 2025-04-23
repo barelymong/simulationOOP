@@ -1,80 +1,59 @@
 package life;
 
-import life.actions.InitActions;
-import life.animals.Creature;
-import life.animals.Herbivore;
-import life.objects.Grass;
-import life.objects.Ground;
-import life.objects.Tree;
-import traversalMethods.BFS;
-import traversalMethods.BFSgrid;
+import life.actions.Action;
+import life.actions.initActions.GenerateCreatures;
+import life.actions.turnActions.CallCreaturesToMove;
+import life.actions.initActions.CreateWorld;
+import life.tools.Coordinate;
+import life.tools.GameMap;
+import life.tools.Renderer;
 
 import java.util.*;
 
 public class Simulation {
-    static public GameMap gameMap;
-    public void nextTurn(){};
-    public void startSimulation(){};
+    List<Action> initActions = new ArrayList<>();
+    List<Action> turnActions = new ArrayList<>();
+    public GameMap gameMap;
 
-    public void pauseSimulation(){};
-
-    public Simulation(Coordinate gameMapSize){
-        gameMap = InitActions.createWorld(gameMapSize);
+    Simulation(Coordinate gameMapSize) {
+        this.gameMap = new GameMap(gameMapSize);
     }
 
+    public void startSimulation() {
+        initActions.add(new CreateWorld());
+        initActions.add(new GenerateCreatures());
+        for (Action action : initActions) {
+            action.perform(gameMap);
+        }
+    }
+
+    public void nextTurn() {
+        turnActions.add(new CallCreaturesToMove());
 
 
-
-
-
-    public static void main(String[] args) {
-
-        Simulation simulation = new Simulation(new Coordinate(150, 17));
-
-        Generator generator = new Generator(gameMap);
-
-        generator.generateCreature();
-
-        while(true) {
-            for(Creature creature : gameMap.creatures) {
-                Deque<Coordinate> path = BFSgrid.createPath(gameMap, creature.getCoordinate(), Grass.class);
-                Renderer.clearScreen();
-
-                creature.makeMove(path.pop(), gameMap);
+        while (true) {
+            for (Action action : turnActions) {
+                action.perform(gameMap);
             }
-
-
             Renderer.renderMap(gameMap);
             System.out.println(" ||| Количество слонов: " + gameMap.creatures.size());
-
             try {
                 Thread.sleep(1000); // Задержка между кадрами
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
 
-            }
+
+        }
+    }
+    public void pauseSimulation() {
+    }
+
+    public static void main(String[] args) {
+
+        Simulation simulation = new Simulation(new Coordinate(30, 6));
+        simulation.startSimulation();
+        simulation.nextTurn();
         }
     }
 
-
-
-
-//    List<Coordinate> path = BFSgrid.createPath(gameMap, elephanto1.getCoordinate(), Grass.class);
-//            for(int step = 0; step < path.size(); step++) { // проходимся по пути, от начальной координаты к координате цели
-//        Renderer.clearScreen(); // очистка экрана
-//
-//        Coordinate stepCoordinate = new Coordinate(path.get(step)); // получение координат пути
-//
-//        elephanto1.makeMove(stepCoordinate, gameMap);
-//
-//        Renderer.renderMap(gameMap);
-//
-//        try {
-//        Thread.sleep(300); // Задержка между кадрами
-//        } catch (InterruptedException e) {
-//        Thread.currentThread().interrupt();
-//        }
-//
-//        }
-//        }

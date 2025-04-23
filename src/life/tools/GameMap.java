@@ -1,7 +1,8 @@
-package life;
+package life.tools;
 
-import life.animals.Creature;
-import life.objects.*;
+import life.entities.Entity;
+import life.entities.animals.Creature;
+import life.entities.naturalEntities.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

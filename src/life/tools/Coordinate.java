@@ -1,4 +1,4 @@
-package life;
+package life.tools;
 
 import java.util.Objects;
 

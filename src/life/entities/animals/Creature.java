@@ -1,10 +1,8 @@
-package life.animals;
+package life.entities.animals;
 
-import life.Coordinate;
-import life.Entity;
-import life.GameMap;
-
-import java.util.List;
+import life.tools.Coordinate;
+import life.entities.Entity;
+import life.tools.GameMap;
 
 public abstract class Creature extends Entity {
     private int speed; // сколько клеток проходит за 1 ход
@@ -32,8 +30,4 @@ public abstract class Creature extends Entity {
         this.hp = hp;
     }
 
-//    @Override
-//    public String getImage() {
-//        return image;
-//    }
 }

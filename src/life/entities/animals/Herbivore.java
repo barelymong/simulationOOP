@@ -1,16 +1,9 @@
-package life.animals;
+package life.entities.animals;
 
-import life.Coordinate;
-import life.Entity;
-import life.GameMap;
-import life.Renderer;
-import life.objects.Grass;
-import life.objects.Ground;
-import traversalMethods.BFS;
-import traversalMethods.BFSgrid;
-
-import java.util.HashMap;
-import java.util.List;
+import life.tools.Coordinate;
+import life.tools.GameMap;
+import life.entities.naturalEntities.Grass;
+import life.entities.naturalEntities.Ground;
 
 
 public class Herbivore extends Creature{

@@ -1,20 +1,15 @@
 package traversalMethods;
 
-import life.Coordinate;
-import life.Entity;
-import life.GameMap;
-import life.animals.Creature;
-import life.objects.Grass;
+import life.tools.Coordinate;
+import life.entities.Entity;
+import life.tools.GameMap;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class BFSgrid {
     static int[] dr = {-1, +1, 0, 0};
     static int[] dc = {0, 0, +1, -1};
 
-    // int rows = gameMap.getGlobalY(); // Количество строк (высота карты)
-    //        int cols = gameMap.getGlobalX(); // Количество столбцов (ширина карты)
     public static HashMap<Coordinate, Coordinate> traversal(GameMap gameMap, Coordinate currentCoordinate, Class<? extends Entity> targetType){ // как третий параметр добавить искомый объект
         HashMap<Coordinate, Coordinate> parent = new HashMap<>();
         Queue<Coordinate> queue = new ArrayDeque<>();
@@ -22,8 +17,8 @@ public class BFSgrid {
         boolean[][] visited = new boolean[gameMap.getGlobalY()][gameMap.getGlobalX()];
 
         visited[currentCoordinate.getY()][currentCoordinate.getX()] = true;
-        //currentCoordinate - то, чьих соседей мы рассматриваем
-        //adjCoordinate - соседи рассматриваемой координаты
+        //currentCoordinate - координата от которой в данный момент рассматриваются смежные координаты
+        //adjCoordinate - смежные координаты
         Coordinate target = null;
         queue.offer(currentCoordinate);
 

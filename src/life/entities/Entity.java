@@ -1,4 +1,6 @@
-package life;
+package life.entities;
+
+import life.tools.Coordinate;
 
 public abstract class Entity {
 

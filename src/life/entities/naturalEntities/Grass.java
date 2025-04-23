@@ -1,8 +1,7 @@
-package life.objects;
-
-import life.Entity;
+package life.entities.naturalEntities;
 
 public class Grass extends NaturalEntity{
+    //String image = "\uD83C\uDF3F";
     String image = "\uD83C\uDF3F";
     boolean crossAbility = true;
     @Override

@@ -1,7 +1,7 @@
-package life;
+package life.tools;
 
-import life.actions.InitActions;
-import life.objects.*;
+
+import life.entities.Entity;
 
 public class Renderer {
 
