@@ -17,34 +17,66 @@ public class CallCreaturesToMove implements Action {
 
     @Override
     public void perform(GameMap gameMap) {
-        for (Creature creature : gameMap.creatures) {
-            Deque<Coordinate> path = BFSgrid.createPath(gameMap, creature.getCoordinate(), Grass.class);
-            if (path.isEmpty()) {
+
+        for (Creature creature : gameMap.creatures){
+
+            // ЕСЛИ ГОЛОДЕН ТО СОЗДАЕТ ПУТЬ
+            if(creature.isStarving()) {
+                System.out.println("СЛОН ГОЛОДЕН");
+                Deque<Coordinate> path = BFSgrid.createPath(gameMap, creature.getCoordinate(), Grass.class);
+
+                if (path.isEmpty()) {
+                    Random random = new Random();
+
+                    int movementChance = random.nextInt(101); // шанс подвигаться
+
+                    if (movementChance < 60) { // шанс что creature подвигается
+                        List<Coordinate> adjCoordinates = RandomMovement.createListOfCoordinatesToMove(gameMap, creature);
+                        int randomPositionOfList = random.nextInt(adjCoordinates.size()); // рандомизация выбора позиции  из массива со координатами
+
+                        Coordinate coordinate = adjCoordinates.get(randomPositionOfList);
+
+                        creature.makeMove(coordinate, gameMap);
+
+
+                    } else { // в этом случае creature стоит на месте
+                        continue;
+                    }
+                }
+
+                else {
+                    creature.makeMove(path.pop(), gameMap);
+                }
+
+            }
+
+
+            // ЕСЛИ НЕ ГОЛОДЕН ТО НЕ СОЗДАЕТ ПУТЬ. СХОЖАЯ ЛОГИКА ПЕРЕДВИЖЕНИЯ КОГДА ТРАВЫ ВООБЩЕ НЕТ
+            else {
+
+
                 Random random = new Random();
 
                 int movementChance = random.nextInt(101); // шанс подвигаться
 
-                if (movementChance < 60) {
-                    List<Coordinate> randomCoordinates = RandomMovement.createListOfCoordinatesToMove(gameMap, creature);
-                    int randomPositionOfList = random.nextInt(randomCoordinates.size()); // рандомизация выбора пути на основе размера массива
+                if (movementChance < 60) { // шанс что creature подвигается
+                    List<Coordinate> adjCoordinates = RandomMovement.createListOfCoordinatesToMove(gameMap, creature);
+                    int randomPositionOfList = random.nextInt(adjCoordinates.size()); // рандомизация выбора позиции  из массива со координатами
 
-                    Coordinate coordinate = randomCoordinates.get(randomPositionOfList);
+                    Coordinate coordinate = adjCoordinates.get(randomPositionOfList);
 
                     creature.makeMove(coordinate, gameMap);
 
 
-                }
-
-                else{
-                    System.out.println("Слон рандомно не ходит");
+                } else { // в этом случае creature стоит на месте
                     continue;
-                    }
                 }
+            }
+        }
 
 
-            else {
-                creature.makeMove(path.pop(), gameMap);
-            }
-            }
+
+
+
         }
     }

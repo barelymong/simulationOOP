@@ -4,6 +4,7 @@ import life.actions.Action;
 import life.actions.initActions.GenerateCreatures;
 import life.actions.turnActions.CallCreaturesToMove;
 import life.actions.initActions.CreateWorld;
+import life.actions.turnActions.CreatureToStarve;
 import life.tools.Coordinate;
 import life.tools.GameMap;
 import life.tools.Renderer;
@@ -29,14 +30,18 @@ public class Simulation {
 
     public void nextTurn() {
         turnActions.add(new CallCreaturesToMove());
-
+        turnActions.add(new CreatureToStarve());
 
         while (true) {
             for (Action action : turnActions) {
                 action.perform(gameMap);
             }
+
+
+
             Renderer.renderMap(gameMap);
             System.out.println(" ||| Количество слонов: " + gameMap.creatures.size());
+
             try {
                 Thread.sleep(1000); // Задержка между кадрами
             } catch (InterruptedException e) {
