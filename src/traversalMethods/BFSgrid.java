@@ -19,7 +19,7 @@ public class BFSgrid {
         visited[currentCoordinate.getY()][currentCoordinate.getX()] = true;
         //currentCoordinate - координата от которой в данный момент рассматриваются смежные координаты
         //adjCoordinate - смежные координаты
-        Coordinate target = null;
+        Coordinate targetCoordinate = null;
         queue.offer(currentCoordinate);
 
         while(!queue.isEmpty()){
@@ -52,23 +52,29 @@ public class BFSgrid {
 
                 parent.put(adjCoordinate, currentCoordinate);
                 if (targetType.isInstance(adjEntity)) {
-                    target = adjCoordinate;
+                    targetCoordinate = adjCoordinate;
 
                     Coordinate flag = new Coordinate(-1, -1);
-                    parent.put(flag, target);
+                    parent.put(flag, targetCoordinate);
                     queue.clear();
                     break;
                 }
 
-
             }
 
-            if(target != null){
-                break;
-            }
+
             // будущее исключение если не найдено то что нужно
         }
-        return parent;
+
+
+            if(targetCoordinate != null){
+                return parent;
+            }
+
+            else{
+                return new HashMap<>();
+            }
+
     }
 
     public static Deque<Coordinate> reconstructPath(Coordinate start, HashMap<Coordinate, Coordinate> parent) {
@@ -96,7 +102,9 @@ public class BFSgrid {
 
     public static Deque<Coordinate> createPath(GameMap gameMap, Coordinate entityCoordinate, Class<? extends Entity> targetType){
         HashMap<Coordinate, Coordinate> parent = BFSgrid.traversal(gameMap, entityCoordinate, targetType);
-
+        if(parent.isEmpty()){
+            return new ArrayDeque<>();
+        }
         return reconstructPath(entityCoordinate, parent);
     }
 }

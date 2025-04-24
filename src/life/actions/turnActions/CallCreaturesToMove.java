@@ -15,6 +15,9 @@ public class CallCreaturesToMove implements Action {
     public void perform(GameMap gameMap) {
     for(Creature creature : gameMap.creatures) {
         Deque<Coordinate> path = BFSgrid.createPath(gameMap, creature.getCoordinate(), Grass.class);
+        if(path.isEmpty()){
+            break;
+        }
         creature.makeMove(path.pop(), gameMap);
         System.out.println("Координата слона " + creature.getCoordinate());
         }
