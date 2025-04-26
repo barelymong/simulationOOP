@@ -13,7 +13,7 @@ public class GenerateCreatures implements Action {
         Random random = new Random();
         //
         //int herbivoreAmount = random.nextInt(4)+3;
-        int herbivoreAmount = 1;
+        int herbivoreAmount = 10;
 
         for(int i = 0; i < herbivoreAmount; i++){
             Coordinate coordinate = generateCoordinate(gameMap);
