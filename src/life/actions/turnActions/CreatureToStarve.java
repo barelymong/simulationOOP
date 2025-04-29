@@ -9,7 +9,7 @@ public class CreatureToStarve implements Action {
     @Override
     public void perform(GameMap gameMap) {
         for (Creature creature : gameMap.creatures) {
-            creature.setHunger(creature.getHunger()-1);
+            creature.setHunger(creature.getHunger()-3);
         }
         }
     }

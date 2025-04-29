@@ -14,7 +14,6 @@ public class Renderer {
         }
     }
 
-    // отрисовка карты путем
     public static void renderMap(GameMap map) {
         Renderer.clearScreen();
         for (int y = 0; y < map.getGlobalY(); y++) {

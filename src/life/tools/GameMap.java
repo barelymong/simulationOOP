@@ -23,9 +23,10 @@ public class GameMap {
 
     };
 
-    public Map<Coordinate, Entity> map = new HashMap<>(); // сама карта - ее содержание в виде хэш таблицы
+    private Map<Coordinate, Entity> map = new HashMap<>(); // сама карта - ее содержание в виде хэш таблицы
 
 
+    public HashMap<Class<?>, Integer> amountOfEntities;
     public List<Creature> creatures = new ArrayList<>();
 
     public void setEntityAt(Coordinate coordinate, Entity entity){

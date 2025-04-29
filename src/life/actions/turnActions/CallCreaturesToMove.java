@@ -22,18 +22,20 @@ public class CallCreaturesToMove implements Action {
             // позже будет адаптировано под логику каждого класса Creature, пока только для Elephant
 
             if(creature.isStarving()) { // если creature голодный то создает путь
-                Deque<Coordinate> path = BFSgrid.createPath(gameMap, creature.getCoordinate(), Grass.class);
-                Coordinate targetCoordinate = path.peekLast(); // через peekLast возвращаем, но не удаляем последний элемент path, это всегда конечная координата
+                creature.buildPath(gameMap);
 
+                Deque<Coordinate> path = creature.getCurrentPath();
                 if (path.isEmpty()) { // если травы по близости не, то он не стоит и ищет targetCoordinate
                     Random random = new Random();
                     randomMovement(gameMap, creature); // случайное движение на смежные координаты
                 }
+
+
                 else {
 
                     creature.makeMove(path.pop(), gameMap); // осмысленное движение по пути
                     // если creature достиг targetCoordinate, то логика насыщения
-                    if (creature.getCoordinate().equals(targetCoordinate)){
+                    if (creature.getCoordinate().equals(creature.getTargetCoordinate())){
                         creature.setHunger(creature.getHunger()+10);
                     }
                 }

@@ -40,7 +40,6 @@ public class Simulation {
 
 
             Renderer.renderMap(gameMap);
-            System.out.println(" ||| Количество слонов: " + gameMap.creatures.size());
 
             try {
                 Thread.sleep(1000); // Задержка между кадрами
@@ -56,7 +55,7 @@ public class Simulation {
 
     public static void main(String[] args) {
 
-        Simulation simulation = new Simulation(new Coordinate(150, 20));
+        Simulation simulation = new Simulation(new Coordinate(40, 10));
         simulation.startSimulation();
         simulation.nextTurn();
         }

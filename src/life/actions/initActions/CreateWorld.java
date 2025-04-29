@@ -17,8 +17,8 @@ public class CreateWorld implements Action {
                 Coordinate globalCoordinate = new Coordinate(x, y);
                 //добавление координат
                 naturalEntity.setCoordinate(globalCoordinate);
-
                 gameMap.setEntityAt(globalCoordinate, naturalEntity);
+
             }
         }
 

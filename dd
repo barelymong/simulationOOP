@@ -1,0 +1,41 @@
+[33mcommit 5bc72c67d34e6caee9d6203202d56a198bb3ddbc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: barelymong <barelymong@yandex.ru>
+Date:   Sun Apr 27 02:28:40 2025 +0300
+
+    minor fixes. changed logic of starving. still fixing many things
+
+[33mcommit 198c3090bc2f06ea3a199ace2fb233e9eb04c779[m
+Author: barelymong <barelymong@yandex.ru>
+Date:   Fri Apr 25 02:49:34 2025 +0300
+
+    added a system of hunger. also noticed that objects at map are deleted when creature move from there. should fix next commit
+
+[33mcommit 9aaa3c16b88f62687589078e154104178de32c20[m
+Author: barelymong <barelymong@yandex.ru>
+Date:   Fri Apr 25 02:01:02 2025 +0300
+
+    spammin in commits and made randomized movement of elephants when theres'not targetCoordinate
+
+[33mcommit 9ac8491a8ef1221916714b4bedf14185f6345457[m
+Author: barelymong <barelymong@yandex.ru>
+Date:   Fri Apr 25 01:15:28 2025 +0300
+
+    fixed Simulation crashing when targetCoordinate ends
+
+[33mcommit 4cec29370caecf1e014536067112cc468a26157e[m
+Author: barelymong <barelymong@yandex.ru>
+Date:   Thu Apr 24 03:14:25 2025 +0300
+
+    i deleted useless classes and just learning to push
+
+[33mcommit 09f06e01ee64c700e7ebc14ccdb423a9317de6f3[m
+Author: barelymong <barelymong@yandex.ru>
+Date:   Thu Apr 24 02:48:57 2025 +0300
+
+    pattern command was added
+
+[33mcommit f1d16b44cc4b4231aecc5b6baecd76c1009aa5a8[m
+Author: Roman Agafonov <wukinamo@gmail.com>
+Date:   Mon Apr 21 18:48:40 2025 +0300
+
+    rr
