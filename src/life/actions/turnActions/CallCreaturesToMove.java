@@ -19,7 +19,6 @@ public class CallCreaturesToMove implements Action {
     public void perform(GameMap gameMap) {
         for (Creature creature : gameMap.creatures){
             creature.behave(gameMap);
-            System.out.println(creature.getHunger());
         }
     }
     }
