@@ -6,8 +6,11 @@ import life.tools.Coordinate;
 import life.entities.Entity;
 import life.tools.GameMap;
 import traversalMethods.BFSgrid;
+import traversalMethods.RandomMovement;
 
 import java.util.Deque;
+import java.util.List;
+import java.util.Random;
 
 public abstract class Creature extends Entity {
     private int speed; // сколько клеток проходит за 1 ход
@@ -33,15 +36,12 @@ public abstract class Creature extends Entity {
         return false;
     }
 
-    public void makeEat(Coordinate coordinate, GameMap gameMap){
+    public abstract void behave(GameMap gameMap);
 
-    }
+
     Coordinate targetCoordinate;
     Deque<Coordinate> currentPath;
-    public void buildPath(GameMap gameMap) {
-        currentPath = BFSgrid.createPath(gameMap, getCoordinate(), Grass.class);
-        this.targetCoordinate = currentPath.peekLast(); // через peekLast возвращаем, но не удаляем последний элемент path, это всегда конечная координата
-    }
+    public abstract void buildPath(GameMap gameMap);
 
     public Coordinate getTargetCoordinate() {
         return targetCoordinate;
@@ -59,6 +59,16 @@ public abstract class Creature extends Entity {
         return currentPath;
     }
 
+    void randomMovement(GameMap gameMap){
+        Random random = new Random();
+        List<Coordinate> adjCoordinates = RandomMovement.createListOfCoordinatesToMove(gameMap, this);
+        int randomPositionOfList = random.nextInt(adjCoordinates.size()); // рандомизация выбора позиции  из массива со координатами
+
+        Coordinate coordinate = adjCoordinates.get(randomPositionOfList);
+
+        makeMove(coordinate, gameMap);
+
+    }
 
 
 }

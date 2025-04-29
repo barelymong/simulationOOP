@@ -55,7 +55,7 @@ public class Simulation {
 
     public static void main(String[] args) {
 
-        Simulation simulation = new Simulation(new Coordinate(40, 10));
+        Simulation simulation = new Simulation(new Coordinate(10, 5));
         simulation.startSimulation();
         simulation.nextTurn();
         }
