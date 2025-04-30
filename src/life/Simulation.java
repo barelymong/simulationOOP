@@ -53,11 +53,6 @@ public class Simulation {
     public void pauseSimulation() {
     }
 
-    public static void main(String[] args) {
 
-        Simulation simulation = new Simulation(new Coordinate(190, 15));
-        simulation.startSimulation();
-        simulation.nextTurn();
-        }
     }
 

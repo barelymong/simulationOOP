@@ -21,6 +21,6 @@ public class CallCreaturesToMove implements Action {
             creature.behave(gameMap);
         }
     }
-    }
+}
 
 
